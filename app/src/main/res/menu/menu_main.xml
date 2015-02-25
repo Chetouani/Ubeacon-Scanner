@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+
+        <item
+            android:id="@+id/action_start_scan"
+            android:title="@string/action_start_scan"/>
+        <item
+            android:id="@+id/action_stop_scan"
+            android:title="@string/action_stop_scan"/>
+        <item
+            android:id="@+id/action_vider_liste"
+            android:title="@string/action_vider_liste"/>
+</menu>

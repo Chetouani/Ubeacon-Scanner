@@ -1,0 +1,62 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="131dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/nombre_beacons_trouver"
+                android:gravity="center"
+                android:textColor="#ff000000"
+                android:textStyle="bold"
+                android:textSize="14dp"
+                android:text="Nombre de beacons : 5" />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/choix_beacons"
+                >
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Estimote"
+                    android:id="@+id/cb_estimote"
+                    android:onClick="clicSurRadioBouton" />
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kontakt"
+                    android:id="@+id/cb_kontakt"
+                    android:onClick="clicSurRadioBouton" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <ListView
+        android:id="@+id/liste_de_beacons"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    </LinearLayout>
+
+
+
+</RelativeLayout>

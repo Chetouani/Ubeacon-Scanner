@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">UBeacon Scanner</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_vider_liste">Vider liste</string>
+    <string name="action_start_scan">Scannner</string>
+    <string name="action_stop_scan">Stop Scan</string>
+</resources>
