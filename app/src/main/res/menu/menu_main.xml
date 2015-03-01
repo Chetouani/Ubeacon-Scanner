@@ -6,11 +6,20 @@
 
         <item
             android:id="@+id/action_start_scan"
-            android:title="@string/action_start_scan"/>
+            android:icon="@drawable/ic_action_play"
+            android:title="Démarrer le scan"
+            android:orderInCategory="100"
+            app:showAsAction="ifRoom"/>
         <item
             android:id="@+id/action_stop_scan"
-            android:title="@string/action_stop_scan"/>
+            android:icon="@drawable/ic_action_pause_over_video"
+            android:title="Stopper le scan"
+            android:orderInCategory="200"
+            app:showAsAction="ifRoom"/>
         <item
             android:id="@+id/action_vider_liste"
-            android:title="@string/action_vider_liste"/>
+            android:icon="@drawable/ic_action_discard"
+            android:title="Vider la liste"
+            android:orderInCategory="300"
+            app:showAsAction="ifRoom"/>
 </menu>

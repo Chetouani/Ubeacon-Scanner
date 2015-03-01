@@ -1,17 +1,17 @@
 package be.uchrony.test_altbeacon;
 
-import android.app.Activity;
+
 import android.bluetooth.BluetoothAdapter;
 import android.content.pm.PackageManager;
 import android.os.RemoteException;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ListView;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +28,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 
-public class MainActivity extends Activity implements BeaconConsumer {
+public class MainActivity extends ActionBarActivity  implements BeaconConsumer {
 
     protected static final String TAG_DEBUG = "TD_RangingActivity";
     private BeaconManager beaconManager;
@@ -37,7 +37,6 @@ public class MainActivity extends Activity implements BeaconConsumer {
     private Region regionBeacon;
     private String uuidEstimote = "B9407F30-F5F8-466E-AFF9-25556B57FE6D";
     private String uuidKontakt = "F7826DA6-4FA2-4E98-8024-BC5B71E0893E";
-    private RadioGroup choixBeacons;
     private boolean  scanEstLancer = false;
 
     @Override
@@ -45,8 +44,9 @@ public class MainActivity extends Activity implements BeaconConsumer {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getActionBar().setDisplayHomeAsUpEnabled(false);
-        getActionBar().setLogo(R.drawable.loupe_bleu);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        //TODO n'affiche pas le logo
+        getSupportActionBar().setLogo(R.drawable.loupe_bleu);
 
         zoneText = (TextView) findViewById(R.id.nombre_beacons_trouver);
         zoneText.setText("Le scan est éteint");
@@ -56,7 +56,6 @@ public class MainActivity extends Activity implements BeaconConsumer {
         listeVue.setAdapter(listeDeBeacons);
 
         regionBeacon = new Region("regionId",null,null,null);
-        choixBeacons = (RadioGroup) findViewById(R.id.choix_beacons);
         beaconManager = BeaconManager.getInstanceForApplication(this);
         beaconManager.getBeaconParsers().add(new BeaconParser().
                 setBeaconLayout("m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24"));
@@ -78,7 +77,7 @@ public class MainActivity extends Activity implements BeaconConsumer {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         // Handle presses on the action bar items
-        switch (item.getItemId()) {
+        switch (id) {
             case R.id.action_start_scan:
                 startScan();
                 return true;
@@ -129,7 +128,7 @@ public class MainActivity extends Activity implements BeaconConsumer {
                         kontakt = (CheckBox) findViewById(R.id.cb_kontakt);
                         if (estimote.isChecked() || kontakt.isChecked()){
                             zoneText.setText("Nombre de beacons : "+beacons.size());
-                            ArrayList<UBeacon> uBeacons = new ArrayList<UBeacon>();
+                            ArrayList<UBeacon> uBeacons = new ArrayList<>();
                             for (Beacon unB : beacons) {
                                 uBeacons.add(new UBeacon(unB));
                             }

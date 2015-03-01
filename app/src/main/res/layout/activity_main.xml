@@ -16,18 +16,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="131dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/nombre_beacons_trouver"
-                android:gravity="center"
-                android:textColor="#ff000000"
-                android:textStyle="bold"
-                android:textSize="14dp"
-                android:text="Nombre de beacons : 5" />
-
             <RadioGroup
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:id="@+id/choix_beacons"
@@ -36,6 +26,7 @@
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="Estimote"
                     android:id="@+id/cb_estimote"
                     android:onClick="clicSurRadioBouton" />
@@ -43,20 +34,36 @@
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="Kontakt"
+                    android:orderInCategory="100"
                     android:id="@+id/cb_kontakt"
                     android:onClick="clicSurRadioBouton" />
             </RadioGroup>
-
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nombre_beacons_trouver"
+                android:gravity="center"
+                android:textColor="#ff000000"
+                android:textStyle="bold"
+                android:textSize="14dp"
+                android:text="Nombre de beacons : 5" />
+
+
+        </LinearLayout>
         <ListView
-        android:id="@+id/liste_de_beacons"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-    </LinearLayout>
-
-
+            android:id="@+id/liste_de_beacons"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+     </LinearLayout>
 
 </RelativeLayout>
