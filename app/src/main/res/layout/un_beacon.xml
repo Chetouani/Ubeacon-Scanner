@@ -54,31 +54,35 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Minor :" />
+                android:text="Minor :"
+                android:layout_weight="1" />
 
             <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/minor"
-                android:textColor="#ffff0003" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+                android:textColor="#ffff0003"
+                android:layout_weight="5" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Major :" />
+                android:text="Major :"
+                android:layout_weight="1" />
 
             <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/major"
-                android:textColor="#ffff0003" />
+                android:textColor="#ffff0003"
+                android:layout_weight="5" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
 
         </LinearLayout>
 
@@ -90,13 +94,28 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rssi : " />
+                android:text="Rssi : "
+                android:layout_weight="1" />
 
             <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/rssi"
-                android:textColor="#ffff0003" />
+                android:textColor="#ffff0003"
+                android:layout_weight="5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MPower : "
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/mpower"
+                android:textColor="#ffff0003"
+                android:layout_weight="5" />
 
         </LinearLayout>
 
@@ -105,16 +124,6 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="MPower : " />
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/mpower"
-                android:textColor="#ffff0003" />
         </LinearLayout>
 
         <LinearLayout

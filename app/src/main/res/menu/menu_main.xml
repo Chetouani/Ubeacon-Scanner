@@ -12,7 +12,7 @@
             app:showAsAction="ifRoom"/>
         <item
             android:id="@+id/action_stop_scan"
-            android:icon="@drawable/ic_action_pause_over_video"
+            android:icon="@drawable/ic_action_pause"
             android:title="Stopper le scan"
             android:orderInCategory="200"
             app:showAsAction="ifRoom"/>
