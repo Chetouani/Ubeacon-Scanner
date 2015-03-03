@@ -3,13 +3,12 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/switch_thumb_normal_material_light">
+    >
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@color/dim_foreground_disabled_material_light">
+        android:orientation="vertical">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -20,13 +19,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nom du IBeacon :"
-                android:id="@+id/textView" />
+                android:id="@+id/textView"
+                android:textColor="#ff000000"
+                android:textStyle="bold"
+                android:textSize="14dp" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/nombeacon"
-                android:textColor="#ffff0003" />
+                android:gravity="center" />
         </LinearLayout>
 
         <LinearLayout
@@ -37,52 +39,52 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="UUID :" />
+                android:text="UUID :"
+                android:textColor="#ff000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/uuid"
-                android:textColor="#ffff0003" />
+                android:gravity="center" />
         </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Minor :"
-                android:layout_weight="1" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/minor"
-                android:textColor="#ffff0003"
-                android:layout_weight="5" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Major :"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textColor="#ff000000"
+                android:textStyle="bold"
+                android:textSize="14dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/major"
-                android:textColor="#ffff0003"
                 android:layout_weight="5" />
 
-        </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Minor :"
+                android:layout_weight="1"
+                android:textColor="#ff000000"
+                android:textStyle="bold"
+                android:textSize="14dp" />
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/minor"
+                android:layout_weight="5" />
 
         </LinearLayout>
 
@@ -95,26 +97,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rssi : "
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textColor="#ff000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/rssi"
-                android:textColor="#ffff0003"
                 android:layout_weight="5" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="MPower : "
-                android:layout_weight="1" />
+                android:textColor="#ff000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/mpower"
-                android:textColor="#ffff0003"
                 android:layout_weight="5" />
 
         </LinearLayout>
@@ -124,23 +129,18 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mac Adresse : "
+                android:textColor="#ff000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mac Adresse : " />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/macadresse"
-                android:textColor="#ffff0003" />
+                android:id="@+id/macadresse" />
         </LinearLayout>
 
         <LinearLayout
@@ -152,14 +152,60 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Distance : "
-                android:id="@+id/textView2" />
+                android:id="@+id/textView2"
+                android:textColor="#ff000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/distanceBeacon" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal">
+
 
             <TextView
                 android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Batterie :"
+                android:id="@+id/textView3"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:textColor="#ff000000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <ProgressBar
+                style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/distanceBeacon"
-                android:textColor="#ffff0003" />
+                android:id="@+id/niveau_batterie"
+                android:progress="12"
+                android:layout_weight="10"
+                android:minHeight="30dp"
+                android:minWidth="20dp"
+                android:maxHeight="30dp"
+                android:maxWidth="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text=" %"
+                android:id="@+id/pourcent_batterie"
+                android:layout_weight="1"
+                android:gravity="center_vertical|end"
+                android:textStyle="bold"
+                android:textSize="14dp" />
+
         </LinearLayout>
 
     </LinearLayout>
+
 </LinearLayout>
