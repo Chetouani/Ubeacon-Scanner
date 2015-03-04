@@ -1,10 +1,8 @@
 package be.uchrony.test_altbeacon;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +18,10 @@ import java.util.Collection;
 import java.util.Collections;
 
 /**
- * Created by Abdelhalim on 23/02/2015.
+ * Représente une Liste de Beacons qui pourra être afficher dans Une ListeView.
+ *
+ * @author  Chetouani Abdelhalim
+ * @version 0.1
  */
 public class ListeDeBeacons extends BaseAdapter  {
 
@@ -29,13 +30,11 @@ public class ListeDeBeacons extends BaseAdapter  {
     private LayoutInflater inflater;
 
     public ListeDeBeacons(Context context) {
-        Log.d(TAG_DEBUG,"constructeur");
         this.inflater = LayoutInflater.from(context);
         this.beacons = new ArrayList<>();
     }
 
     public void remplacerLaListe(Collection<BeaconDevice> nouveausBeacons) {
-        Log.d(TAG_DEBUG,"remplacerLaliste");
         this.beacons.clear();
         this.beacons.addAll(nouveausBeacons);
         Collections.sort(this.beacons);
@@ -45,32 +44,27 @@ public class ListeDeBeacons extends BaseAdapter  {
 
     @Override
     public int getCount() {
-        Log.d(TAG_DEBUG,"getCount");
         return beacons.size();
     }
 
     @Override
     public BeaconDevice getItem(int position) {
-        Log.d(TAG_DEBUG,"getItem");
         return beacons.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        Log.d(TAG_DEBUG,"getItemId");
         return position;
     }
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {
-        Log.d(TAG_DEBUG,"getView");
         view = inflateIfRequired(view, position, parent);
         bind(getItem(position), view);
         return view;
     }
 
     private void bind(BeaconDevice beacon, View view) {
-        Log.d(TAG_DEBUG,"bind");
         ViewHolder holder = (ViewHolder) view.getTag();
 
         holder.macadresse.setText(String.format(" %s", beacon.getAddress()));
@@ -80,8 +74,7 @@ public class ListeDeBeacons extends BaseAdapter  {
         holder.rssi.setText(Double.toString(beacon.getRssi()));
         holder.uuid.setText(beacon.getProximityUUID().toString());
         holder.nomBeacon.setText(" "+beacon.getName());
-        holder.distance.setText(getDistance(beacon));
-        //holder.distance.setText(String.format("%.2f mètre",beacon.getProximity().name()));
+        holder.distance.setText(" "+beacon.getAccuracy());
         if ( beacon.getBatteryPower() > 0) {
             holder.niveauBatterie.setProgress(beacon.getBatteryPower());
             holder.niveauBatterie.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
@@ -107,8 +100,15 @@ public class ListeDeBeacons extends BaseAdapter  {
         }
     }
 
+    private double getDistanceMetre(int txPower, double rssi) {
+            double ratio_db = txPower - rssi;
+            double ratio_linear = Math.pow(10, ratio_db / 10);
+
+            double r = Math.sqrt(ratio_linear);
+            return r;
+    }
+
     private View inflateIfRequired(View view, int position, ViewGroup parent) {
-        Log.d(TAG_DEBUG,"inflateIfRequired");
         if (view == null) {
             view = inflater.inflate(R.layout.un_beacon, null);
             view.setTag(new ViewHolder(view));
