@@ -16,6 +16,7 @@ import com.kontakt.sdk.core.Proximity;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * Représente une Liste de Beacons qui pourra être afficher dans Une ListeView.
@@ -34,10 +35,9 @@ public class ListeDeBeacons extends BaseAdapter  {
         this.beacons = new ArrayList<>();
     }
 
-    public void remplacerLaListe(Collection<BeaconDevice> nouveausBeacons) {
+    public void remplacerLaListe(List<BeaconDevice> nouveausBeacons) {
         this.beacons.clear();
         this.beacons.addAll(nouveausBeacons);
-        Collections.sort(this.beacons);
         notifyDataSetChanged();
     }
 
@@ -74,7 +74,17 @@ public class ListeDeBeacons extends BaseAdapter  {
         holder.rssi.setText(Double.toString(beacon.getRssi()));
         holder.uuid.setText(beacon.getProximityUUID().toString());
         holder.nomBeacon.setText(" "+beacon.getName());
-        holder.distance.setText(" "+beacon.getAccuracy());
+        holder.distance.setText(" "+String.format("%.2f mètre",beacon.getAccuracy()));
+        holder.idBeacon.setText(" "+beacon.getBeaconUniqueId());
+
+        if ( beacon.getName().equals("estimote") ) {
+            holder.idBeacon.setText("???");
+            holder.idBeacon.setTextColor(Color.RED);
+        } else {
+            holder.idBeacon.setText(" "+beacon.getBeaconUniqueId());
+            holder.idBeacon.setTextColor(Color.GRAY);
+        }
+
         if ( beacon.getBatteryPower() > 0) {
             holder.niveauBatterie.setProgress(beacon.getBatteryPower());
             holder.niveauBatterie.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
@@ -128,6 +138,7 @@ public class ListeDeBeacons extends BaseAdapter  {
         final TextView distance;
         final ProgressBar niveauBatterie;
         final TextView pourcentageBatterie;
+        final TextView idBeacon;
 
         ViewHolder(View view) {
             macadresse = (TextView) view.findViewById(R.id.macadresse);
@@ -140,6 +151,7 @@ public class ListeDeBeacons extends BaseAdapter  {
             distance = (TextView) view.findViewById(R.id.distanceBeacon);
             niveauBatterie = (ProgressBar) view.findViewById(R.id.niveau_batterie);
             pourcentageBatterie  = (TextView) view.findViewById(R.id.pourcent_batterie);
+            idBeacon = (TextView) view.findViewById(R.id.id_beacon);
         }
     }
 }

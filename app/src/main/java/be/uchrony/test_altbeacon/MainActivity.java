@@ -1,6 +1,5 @@
 package be.uchrony.test_altbeacon;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
@@ -9,7 +8,10 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.RemoteException;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar.TabListener;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBar.Tab;
+import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,6 +30,7 @@ import com.kontakt.sdk.android.manager.BeaconManager;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 
 /**
  * Activité principale qui permet de scanner les Ibeacons
@@ -104,12 +107,12 @@ public class MainActivity extends ActionBarActivity{
      */
     private void ajoutNavigationTab() {
         // récupération de la barre d'action (rectangle en haut)
-        android.support.v7.app.ActionBar bar = getSupportActionBar() ;
+        ActionBar bar = getSupportActionBar() ;
         bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         // on crée les onglets
-        android.support.v7.app.ActionBar.Tab tabEstimote = bar.newTab();
-        android.support.v7.app.ActionBar.Tab tabKontakt = bar.newTab();
-        android.support.v7.app.ActionBar.Tab tabTous = bar.newTab();
+        Tab tabEstimote = bar.newTab();
+        Tab tabKontakt = bar.newTab();
+        Tab tabTous = bar.newTab();
         // on les nommes
         tabEstimote.setText("Estimote");
         tabKontakt.setText("Kontakt");
@@ -135,10 +138,10 @@ public class MainActivity extends ActionBarActivity{
      * @param type le type de l'onglet KONTAKT ESTIMOTE TOUS
      *
      */
-    private android.support.v7.app.ActionBar.TabListener getTabListener(final String type) {
-        return new android.support.v7.app.ActionBar.TabListener() {
+    private TabListener getTabListener(final String type) {
+        return new TabListener() {
             @Override
-            public void onTabSelected(android.support.v7.app.ActionBar.Tab tab
+            public void onTabSelected(Tab tab
                     , FragmentTransaction fragmentTransaction) {
                 if (type.equals("KONTAKT"))
                     tabNavigation = "KONTAKT";
@@ -153,13 +156,13 @@ public class MainActivity extends ActionBarActivity{
             }
 
             @Override
-            public void onTabUnselected(android.support.v7.app.ActionBar.Tab tab
+            public void onTabUnselected(Tab tab
                     , FragmentTransaction fragmentTransaction) {
 
             }
 
             @Override
-            public void onTabReselected(android.support.v7.app.ActionBar.Tab tab
+            public void onTabReselected(Tab tab
                     , FragmentTransaction fragmentTransaction) {
 
             }
@@ -298,6 +301,7 @@ public class MainActivity extends ActionBarActivity{
             public void onBeaconsDiscovered(Region region, List<BeaconDevice> beaconDevices) {
                 // si il y'a au moins un beacon trouvé
                 if (beaconDevices.size() >0) {
+
                     if (tabNavigation.equals("TOUS")) {
                         etatDuScan.setText("Nombre de beacons : "+beaconDevices.size());
                         listeDeBeacons.remplacerLaListe(beaconDevices);
@@ -340,7 +344,7 @@ public class MainActivity extends ActionBarActivity{
                 connect();
             } else {
                 Toast.makeText(this, "Erreur activation Bluetooth", Toast.LENGTH_LONG).show();
-                getActionBar().setSubtitle("Erreur activation Bluetooth");
+                getSupportActionBar().setSubtitle("Erreur activation Bluetooth");
             }
             return;
         }
